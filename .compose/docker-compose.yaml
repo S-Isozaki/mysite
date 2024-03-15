@@ -1,0 +1,21 @@
+version: '3.8'
+name: mysite
+
+services:
+  backend:
+    build: ./backend
+    container_name: mysite-backend-container
+    command: python manage.py runserver 0.0.0.0:8000
+    ports: 
+      - '8000:8000'
+    volumes:
+      - ./backend:/django
+  
+  frontend:
+    build: ./frontend
+    container_name: mysite-frontend-container
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+      - mysite-node-modules-volume:/frontend/node_modules

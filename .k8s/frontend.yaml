@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-pod
+  labels:
+    name: frontend-label
+spec:
+  containers:
+  - name: frontend-container
+    image: mysite-frontend
+    imagePullPolicy: IfNotPresent
+    command: [ "npm", "run", "dev" ]
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 3000
+        name: frontend-port
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    name: frontend-label
+  ports:
+  - port: 3000
+    targetPort: frontend-port

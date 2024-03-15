@@ -1,0 +1,37 @@
+version: '3.8'
+name: mysite
+
+services:
+  backend:
+    build:
+      context: ./backend
+      target: base
+    container_name: mysite-backend-container
+    ports: 
+      - '8000:8000'
+    volumes:
+      - ./backend:/backend
+  
+  frontend:
+    build:
+      context: ./frontend
+      target: base
+    container_name: mysite-frontend-container
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/frontend
+      - mysite-node-modules-volume:/frontend/mysite/node_modules
+  
+  database:
+    build:
+      context: ./database
+    container_name: mysite-database-container
+    expose:
+      - '3306'
+    volumes:
+      - mysite-database-volume:/var/lib/mysql
+
+volumes:
+  mysite-node-modules-volume:
+  mysite-database-volume:
