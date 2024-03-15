@@ -5,7 +5,6 @@ services:
   backend:
     build:
       context: ./backend
-      target: base
     container_name: mysite-backend-container
     ports: 
       - '8000:8000'

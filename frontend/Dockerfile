@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19 AS base
+FROM node:20 AS base
 
 WORKDIR /frontend
 RUN npm install create-next-app -g
