@@ -1,2 +1,3 @@
 ./backend/env
-**/Dockerfile
+./backend/djangobackend/djangobackend/local_settings.py
+./frontend/mysite/node_modules

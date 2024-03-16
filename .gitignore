@@ -2,3 +2,5 @@
 /frontend/mysite/node_modules
 /memo.txt
 /.nenv
+**/migrations
+**/__pycache__
