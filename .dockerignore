@@ -1,3 +1,4 @@
 ./backend/env
 ./backend/djangobackend/djangobackend/local_settings.py
 ./frontend/mysite/node_modules
+./startup.ps1

@@ -17,6 +17,13 @@ spec:
     ports:
       - containerPort: 3000
         name: frontend-port
+    volumeMounts:
+      - mountPath: /frontend
+        name: frontend-pod-volume
+  volumes:
+    - name: frontend-pod-volume
+      hostPath:
+        path: /mysite/frontend
 
 ---
 apiVersion: v1

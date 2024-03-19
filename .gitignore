@@ -5,3 +5,4 @@
 **/migrations
 **/__pycache__
 ./backend/djangobackend/db.sqlite3
+./startup.ps1

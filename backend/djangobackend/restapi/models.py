@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User
+from django.core.exceptions import ValidationError
 
 class AppUserManager(BaseUserManager):
     def create_user(self, username, email, password=None):
@@ -10,6 +11,8 @@ class AppUserManager(BaseUserManager):
             raise ValueError('A mail address is required')
         if not password:
             raise ValueError('A password is required')
+        if self.filter(username=username).exists():
+            raise ValidationError('this handle name have been used')
         user = self.model(username=username, email=email)
         user.set_password(password)
         user.save

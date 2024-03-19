@@ -18,9 +18,9 @@ services:
     container_name: mysite-frontend-container
     ports:
       - '3000:3000'
-    volumes:
-      - ./frontend:/frontend
-      - mysite-node-modules-volume:/frontend/mysite/node_modules
+    # volumes:
+    #   - ./frontend:/frontend
+    #   - mysite-node-modules-volume:/frontend/mysite/node_modules
   
   database:
     build:
@@ -32,5 +32,5 @@ services:
       - mysite-database-volume:/var/lib/mysql
 
 volumes:
-  mysite-node-modules-volume:
+  # mysite-node-modules-volume:
   mysite-database-volume:
