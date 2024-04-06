@@ -14,6 +14,7 @@ export default function Games() {
   }
   return (
     <>
+      <Link href={'/games/frame'}>1 frame trainer</Link>
       <Link href={'/games/typing'}>typing game</Link>
       { errorMsg && <p>Error: { errorMsg }</p>}
     </>
