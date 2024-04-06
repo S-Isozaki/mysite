@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'restapi',
+    'typinggameapi',
     'rest_framework',
 ]
 
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'djangobackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'restapidb',
+        'NAME': 'typinggameapidb',
         'HOST': 'database',
         'USER': 'root',
         'PASSWORD': 'password',
@@ -129,7 +129,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'restapi.AppUser'
+AUTH_USER_MODEL = 'typinggameapi.AppUser'
 
 try:
     from .local_settings import *
