@@ -11,4 +11,6 @@ def validate_register_data(data):
         raise ValidationError('this mail address has been used')
     if UserModel.objects.filter(username=username).exists():
         raise ValidationError('this user name has been used')
+    if len(password) < 8:
+        raise ValidationError('this password is too short')
     return data
