@@ -56,10 +56,22 @@ class SignoutTest(TestCase):
         c1.post(register_url, {'username': 'user1', 'email': 'user1@example.com', 'password': 'password123'})
         signin_url = reverse('signin')
         c1.post(signin_url, {'username': 'user1', 'password': 'password123'})
+
+        # ユーザーのログアウト
         c2 = Client()
         c2.post(register_url, {'username': 'user2', 'email': 'user2@example.com', 'password': 'password223'})
         c2.post(signin_url, {'username': 'user2', 'password': 'password223'})
         self.assertEqual(Session.objects.count(), 2)
+        print(Session.objects.all())
+        # <QuerySet [<Session: mhavm5hu30iy7tlt7kef4a7e4q8c8mfr>, <Session: 08z2o1s09qfirsi17bqmb313hqi6p4ig>]>
+
         signout_url = reverse('signout')
         response = c2.post(signout_url)
         self.assertEqual(Session.objects.count(), 1)
+        print(Session.objects.all())
+
+        # ユーザー1としてログイン中のユーザー1がユーザー2としてログイン
+        c1.post(signin_url, {'username': 'user2', 'password': 'password223'})
+        print(Session.objects.all())
+        # <QuerySet [<Session: 94yvceenbltq499i3p7vvcicpsy0uqh6>]>
+        # 新たなセッションが発生している
