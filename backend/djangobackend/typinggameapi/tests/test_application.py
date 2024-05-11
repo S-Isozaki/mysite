@@ -11,6 +11,16 @@ class HealthCheckTests(TestCase):
         self.assertEqual(response.json()['msg'], "pass")
 
 class RegistrationTests(TestCase):
+    def test_builtin_register(self):
+        url = reverse('register')
+        # 登録
+        c = Client()
+        response = c.post(url, {'username': 'user1', 'email': 'user1@example.com', 'password': 'password123'})
+        self.assertEqual(response.status_code, 201)
+        response = c.post(reverse('login'), {'username': 'user1', 'password': 'password123'})
+        print(response.status_code)
+        print(Session.objects.all())
+
     def test_registration(self):
         url = reverse('register')
         # 登録

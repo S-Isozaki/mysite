@@ -14,7 +14,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      target: base
+      # target: base
     container_name: mysite-frontend-container
     ports:
       - '3000:3000'

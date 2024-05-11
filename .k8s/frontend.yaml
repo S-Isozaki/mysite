@@ -12,18 +12,18 @@ spec:
     command: [ "npm", "run", "dev" ]
     resources:
       limits:
-        memory: "512Mi"
+        memory: "1024Mi"
         cpu: "500m"
     ports:
       - containerPort: 3000
         name: frontend-port
-    volumeMounts:
-      - mountPath: /frontend
-        name: frontend-pod-volume
-  volumes:
-    - name: frontend-pod-volume
-      hostPath:
-        path: /mysite/frontend
+  #   volumeMounts:
+  #     - mountPath: /frontend
+  #       name: frontend-pod-volume
+  # volumes:
+  #   - name: frontend-pod-volume
+  #     hostPath:
+  #       path: /mysite/frontend
 
 ---
 apiVersion: v1
@@ -33,6 +33,7 @@ metadata:
 spec:
   selector:
     name: frontend-label
+  type: NodePort
   ports:
   - port: 3000
     targetPort: frontend-port
