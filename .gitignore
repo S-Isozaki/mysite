@@ -1,5 +1,6 @@
 /.env
 /frontend/mysite/node_modules
+/frontend/mysite/.next
 /memo.txt
 **/migrations
 **/__pycache__
