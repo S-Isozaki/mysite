@@ -2,6 +2,19 @@
 import Timer, { TimerHandle } from './components/Timer';
 import Display, { DisplayHandle } from './components/Display';
 import { useRef, useState, useEffect } from 'react';
+import axios from 'axios';
+
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.withCredentials = true;
+
+const client = axios.create({
+  baseURL: 'http://backend-service:8000'
+});
+
+const sendPing = () => {
+  axios.get('/health').then(response => {console.log(response)}).catch(error => {console.error('Error fetching authentication status:', error);});
+}
 
 type canvasProps = {
   str: string;
@@ -48,6 +61,7 @@ const App = () => {
       <button onClick={() => {timerRef.current!.startTimer()}}>timer start</button>
       <button onClick={() => {timerRef.current!.stopTimer()}}>timer stop</button>
       <button onClick={() => {timerRef.current!.clearTimer()}}>timer clear</button>
+      <button onClick={() => {sendPing}}>send ping</button>
     </>
   )
 }
