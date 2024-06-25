@@ -7,3 +7,4 @@
 backend/djangobackend/db.sqlite3
 backend/djangobackend/djangobackend/local_settings.py
 ./startup.ps1
+backend/djangobackend/.env
